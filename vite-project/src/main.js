@@ -249,16 +249,19 @@ const songs = [
     alt: "Album art for Billie Jean by Michael Jackson",
   },
 ];
-function inject(songs) {
-  //query the container
+function inject(item) {
   const container = document.querySelector(".container");
-  const html = `<div class="card" data-title= "${item.title}">
-        <h2 class="cardtitle" >${item.title}</h2>
-        <h2 class="cardartist" >${item.artist}</h2>
-        <h4 class="genre" >${item.genre} </h4>
-        <img src=${item.image} alt="">
-        
-        <button class="listened">listened</button>
-        </div>`;
+
+  const html = `
+    <div class="card" data-title="${item.title}">
+      <h2 class="cardtitle">${item.title}</h2>
+      <h2 class="cardartist">${item.artist}</h2>
+      <h4 class="genre">${item.genre}</h4>
+      <img src="${item.image}" alt="">
+      <button class="listened">listened</button>
+    </div>
+  `;
+
   container.insertAdjacentHTML("afterbegin", html);
 }
+inject();
