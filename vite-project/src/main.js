@@ -249,19 +249,88 @@ const items = [
     alt: "Album art for Billie Jean by Michael Jackson",
   },
 ];
+let cart = [];
+//create a javascript array called items, each item shouldhave the following key , anme
+
 function inject(item) {
+  //query the container
   const container = document.querySelector(".container");
-
-  const html = `
-    <div class="card" data-title="${item.title}">
-      <h2 class="cardtitle">${item.title}</h2>
-      <h2 class="cardartist">${item.artist}</h2>
-      <h4 class="genre">${item.genre}</h4>
-      <img src="${item.image}" alt="">
-      <button class="listened">listened</button>
-    </div>
-  `;
-
+  const html = `<div class="card" data-title= "${item.title}" data-genre="${item.genre}" data-price="${item.price}">
+        <h2 class="cardtitle" >${item.title}</h2>
+        <img src=${item.image} alt="">
+        <h4 class="artist" >$${item.artist} </h4>
+        <button class="wish">Add to Wishlist</button>
+        </div>`;
   container.insertAdjacentHTML("afterbegin", html);
 }
-inject();
+function showCart(item) {
+  const cart = document.querySelector(".cart");
+  const html = `<div class="cart">
+        <h4 class="cartcardtitle" >${item.title} </h4>
+        <h4 class="cartcardartist" >$${item.artist} </h4>
+        </div>`;
+  cart.insertAdjacentHTML("afterbegin", html);
+}
+let cartTotal = 0;
+function total() {
+  cartTotal = 0;
+  cart.forEach((item) => (cartTotal = cartTotal + item.price));
+  console.log(cartTotal.toFixed(2));
+  const container = document.querySelector(".cart");
+  //
+  const oldTotal = container.querySelector(".TotalPrice");
+  if (oldTotal) {
+    oldTotal.remove();
+  }
+  const html = `<div class="TotalPrice">
+  <h1>Total</h1>
+  <h4> ${cartTotal.toFixed(2)}</h4></div>`;
+  container.insertAdjacentHTML("beforeend", html);
+}
+products.forEach((product) => inject(product));
+
+function addToCart() {
+  const buttons = document.querySelectorAll(".add");
+  const btnArray = Array.from(buttons);
+  btnArray.forEach((btn) =>
+    btn.addEventListener("click", function (event) {
+      console.log(event.target.textContent);
+      const name = event.target.closest(".card").getAttribute("data-title");
+      console.log(event.target.closest(".card").getAttribute("data-title"));
+      const p = products.find((product) => product.name === name);
+      console.log("found");
+      cart.push(p);
+      total();
+      showCart(p);
+      //find item in = done
+      //push item to cart= done
+      //total cart
+      //show cart
+    })
+  );
+}
+addToCart();
+
+function category() {
+  const allButtons = document.querySelectorAll(".category");
+  allButtons.forEach((button) => {
+    button.addEventListener("click", function (event) {
+      console.log(event.target.textContent);
+      const category = event.target.textContent.trim();
+      filterByGenre(genre);
+    });
+  });
+}
+category();
+
+function filterByGenre(genre) {
+  const cards = document.querySelectorAll(".card");
+  cards.forEach((card) => {
+    const cardCategory = card.getAttribute("data-genre");
+    if (category === cardCategory) {
+      card.style.display = "flex";
+    } else {
+      card.style.display = "none";
+    }
+  });
+}
