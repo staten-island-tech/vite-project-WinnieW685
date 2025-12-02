@@ -70,7 +70,7 @@ const items = [
     title: "Happier Than Ever",
     artist: "Billie Eilish",
     genres: ["Alternative", "Pop"],
-    image: "/HappierThanEver.png",
+    image: "/HapperThanEver.png",
     alt: "Album art for Happier Than Ever by Billie Eilish",
   },
   {
@@ -119,7 +119,7 @@ const items = [
     title: "Heat Waves",
     artist: "Glass Animals",
     genres: ["Alternative", "Pop"],
-    image: "HeatWaves.jpg",
+    image: "Heatwaves.jpg",
     alt: "Album art for Heat Waves by Glass Animals",
   },
   {
@@ -168,7 +168,7 @@ const items = [
     title: "SICKO MODE",
     artist: "Travis Scott",
     genres: ["Hip-Hop"],
-    image: "Sickomode.jpg",
+    image: "SickoMode.jpg",
     alt: "Album art for SICKO MODE by Travis Scott",
   },
   {
@@ -203,7 +203,7 @@ const items = [
     title: "Rockstar",
     artist: "DaBaby ft. Roddy Ricch",
     genres: ["Hip-Hop"],
-    image: "Rockstar.png",
+    image: "Rockstar.jpg",
     alt: "Album art for Rockstar by DaBaby",
   },
   {
@@ -255,7 +255,7 @@ let cart = [];
 function inject(item) {
   //query the container
   const container = document.querySelector(".container");
-  const html = `<div class="card" data-title= "${item.title}" data-genre="${item.genre}" data-price="${item.price}">
+  const html = `<div class="card" data-title= "${item.title}" data-genre="${item.genre}"= data-artist="${item.artist}">
         <h2 class="cardtitle" >${item.title}</h2>
         <img src=${item.image} alt="">
         <h4 class="artist" >$${item.artist} </h4>
@@ -267,30 +267,15 @@ function showCart(item) {
   const cart = document.querySelector(".cart");
   const html = `<div class="cart">
         <h4 class="cartcardtitle" >${item.title} </h4>
-        <h4 class="cartcardartist" >$${item.artist} </h4>
+        <h4 class="cartcardartist" >${item.artist} </h4>
         </div>`;
   cart.insertAdjacentHTML("afterbegin", html);
 }
-let cartTotal = 0;
-function total() {
-  cartTotal = 0;
-  cart.forEach((item) => (cartTotal = cartTotal + item.price));
-  console.log(cartTotal.toFixed(2));
-  const container = document.querySelector(".cart");
-  //
-  const oldTotal = container.querySelector(".TotalPrice");
-  if (oldTotal) {
-    oldTotal.remove();
-  }
-  const html = `<div class="TotalPrice">
-  <h1>Total</h1>
-  <h4> ${cartTotal.toFixed(2)}</h4></div>`;
-  container.insertAdjacentHTML("beforeend", html);
-}
-products.forEach((product) => inject(product));
+
+items.forEach((items) => inject(items));
 
 function addToCart() {
-  const buttons = document.querySelectorAll(".add");
+  const buttons = document.querySelectorAll(".wish");
   const btnArray = Array.from(buttons);
   btnArray.forEach((btn) =>
     btn.addEventListener("click", function (event) {
@@ -316,7 +301,7 @@ function category() {
   allButtons.forEach((button) => {
     button.addEventListener("click", function (event) {
       console.log(event.target.textContent);
-      const category = event.target.textContent.trim();
+      const genre = event.target.textContent.trim();
       filterByGenre(genre);
     });
   });
