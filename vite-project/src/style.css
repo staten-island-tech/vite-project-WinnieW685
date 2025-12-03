@@ -103,6 +103,7 @@ button:focus-visible {
 }
 
 img {
-  size: 50% auto;
+  height: 50% auto;
+  width: 50% auto;
   border-radius: 10px;
 }

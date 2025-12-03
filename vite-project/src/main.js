@@ -34,7 +34,7 @@ const items = [
   {
     title: "Bad Guy",
     artist: "Billie Eilish",
-    genres: ["Electropop"],
+    genres: ["Electro", "Pop"],
     image: "/BadGuy.jpg",
     alt: "Album art for Bad Guy by Billie Eilish",
   },
@@ -104,7 +104,7 @@ const items = [
   {
     title: "Old Town Road",
     artist: "Lil Nas X",
-    genres: ["Country Rap"],
+    genres: ["Rap"],
     image: "/OldTownRoad.jpg",
     alt: "Album art for Old Town Road by Lil Nas X",
   },
@@ -139,7 +139,7 @@ const items = [
   {
     title: "Radioactive",
     artist: "Imagine Dragons",
-    genres: ["Alternative Rock"],
+    genres: ["Rock"],
     image: "/Radioactive.jpg",
     alt: "Album art for Radioactive by Imagine Dragons",
   },
@@ -174,7 +174,7 @@ const items = [
   {
     title: "Good 4 U",
     artist: "Olivia Rodrigo",
-    genres: ["Pop Rock"],
+    genres: ["Pop", "Rock"],
     image: "Good4You.png",
     alt: "Album art for Good 4 U by Olivia Rodrigo",
   },
@@ -223,7 +223,7 @@ const items = [
   {
     title: "The Hills",
     artist: "The Weeknd",
-    genres: ["Alternative R&B"],
+    genres: ["Alternative", "R&B"],
     image: "/TheHills.jpg",
     alt: "Album art for The Hills by The Weeknd",
   },
@@ -258,13 +258,13 @@ function inject(item) {
   const html = `<div class="card" data-title= "${item.title}" data-genre="${item.genre}"= data-artist="${item.artist}">
         <h2 class="cardtitle" >${item.title}</h2>
         <img src=${item.image} alt="">
-        <h4 class="artist" >$${item.artist} </h4>
+        <h4 class="artist" >${item.artist} </h4>
         <button class="wish">Add to Wishlist</button>
         </div>`;
   container.insertAdjacentHTML("afterbegin", html);
 }
 function showCart(item) {
-  const cart = document.querySelector(".cart");
+  const cart = document.querySelector(".card");
   const html = `<div class="cart">
         <h4 class="cartcardtitle" >${item.title} </h4>
         <h4 class="cartcardartist" >${item.artist} </h4>
@@ -280,12 +280,11 @@ function addToCart() {
   btnArray.forEach((btn) =>
     btn.addEventListener("click", function (event) {
       console.log(event.target.textContent);
-      const name = event.target.closest(".card").getAttribute("data-title");
+      const title = event.target.closest(".card").getAttribute("data-title");
       console.log(event.target.closest(".card").getAttribute("data-title"));
-      const p = products.find((product) => product.name === name);
+      const p = items.find((item) => item.title === title);
       console.log("found");
       cart.push(p);
-      total();
       showCart(p);
       //find item in = done
       //push item to cart= done
@@ -296,7 +295,7 @@ function addToCart() {
 }
 addToCart();
 
-function category() {
+/* function category() {
   const allButtons = document.querySelectorAll(".category");
   allButtons.forEach((button) => {
     button.addEventListener("click", function (event) {
@@ -311,11 +310,11 @@ category();
 function filterByGenre(genre) {
   const cards = document.querySelectorAll(".card");
   cards.forEach((card) => {
-    const cardCategory = card.getAttribute("data-genre");
-    if (category === cardCategory) {
+    const cardGenre = card.getAttribute("data-genre");
+    if (genre === cardGenre) {
       card.style.display = "flex";
     } else {
       card.style.display = "none";
     }
-  });
-}
+  }); */
+/* } */
