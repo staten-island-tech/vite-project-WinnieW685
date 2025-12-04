@@ -223,7 +223,7 @@ const items = [
   {
     title: "The Hills",
     artist: "The Weeknd",
-    genres: ["Alternative", "R&B"],
+    genres: ["Alternative"],
     image: "/TheHills.jpg",
     alt: "Album art for The Hills by The Weeknd",
   },
@@ -255,7 +255,7 @@ let cart = [];
 function inject(item) {
   //query the container
   const container = document.querySelector(".container");
-  const html = `<div class="card" data-title= "${item.title}" data-genre="${item.genre}"= data-artist="${item.artist}">
+  const html = `<div class="card" data-title= "${item.title}" data-genre="${item.genres}"= data-artist="${item.artist}">
         <h2 class="cardtitle" >${item.title}</h2>
         <img src=${item.image} alt="">
         <h4 class="artist" >${item.artist} </h4>
@@ -264,12 +264,12 @@ function inject(item) {
   container.insertAdjacentHTML("afterbegin", html);
 }
 function showCart(item) {
-  const cart = document.querySelector(".card");
+  const cart = document.querySelector(".cart");
   const html = `<div class="cart">
         <h4 class="cartcardtitle" >${item.title} </h4>
         <h4 class="cartcardartist" >${item.artist} </h4>
         </div>`;
-  cart.insertAdjacentHTML("afterbegin", html);
+  cart.insertAdjacentHTML("beforeend", html);
 }
 
 items.forEach((items) => inject(items));
@@ -295,8 +295,9 @@ function addToCart() {
 }
 addToCart();
 
-/* function category() {
+function category() {
   const allButtons = document.querySelectorAll(".category");
+
   allButtons.forEach((button) => {
     button.addEventListener("click", function (event) {
       console.log(event.target.textContent);
@@ -311,10 +312,13 @@ function filterByGenre(genre) {
   const cards = document.querySelectorAll(".card");
   cards.forEach((card) => {
     const cardGenre = card.getAttribute("data-genre");
+    console.log(cardGenre);
+    //make genres in arrays
     if (genre === cardGenre) {
-      card.style.display = "flex";
+      //then see if gernre in card genres
+      card.style.display = "";
     } else {
       card.style.display = "none";
     }
-  }); */
-/* } */
+  });
+}
