@@ -314,7 +314,9 @@ function filterByGenre(genre) {
     const cardGenre = card.getAttribute("data-genre");
     console.log(cardGenre);
     //make genres in arrays
-    if (genre === cardGenre) {
+    console.log(cardGenre.split(","));
+    const check = cardGenre.split(",");
+    if (check.find((el) => el === genre)) {
       //then see if gernre in card genres
       card.style.display = "";
     } else {
@@ -322,3 +324,13 @@ function filterByGenre(genre) {
     }
   });
 }
+
+function findSong() {
+  const submitBtn = document.querySelector(".submit");
+  submitBtn.addEventListener("click", function () {
+    const element = document.getElementById("title");
+    const value = element.value;
+    console.log(value);
+  });
+}
+findSong();
