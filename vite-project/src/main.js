@@ -324,13 +324,3 @@ function filterByGenre(genre) {
     }
   });
 }
-
-function findSong() {
-  const submitBtn = document.querySelector(".submit");
-  submitBtn.addEventListener("click", function () {
-    const element = document.getElementById("title");
-    const value = element.value;
-    console.log(value);
-  });
-}
-findSong();
