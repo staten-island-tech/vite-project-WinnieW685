@@ -324,3 +324,17 @@ function filterByGenre(genre) {
     }
   });
 }
+
+document.getElementById("searchForm").addEventListener("submit", function (e) {
+  //Get Values
+  e.preventDefault();
+  let album = {};
+  album.title = document.getElementById("title").value;
+  if (allowedTitles.includes(userTitle)) {
+    console.log(userTitle);
+  } else {
+    console.log("Title not found in array.");
+  }
+});
+
+function searchArray(album) {}
