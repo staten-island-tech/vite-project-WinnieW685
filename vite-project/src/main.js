@@ -330,8 +330,8 @@ document.getElementById("searchForm").addEventListener("submit", function (e) {
   e.preventDefault();
   let album = {};
   album.title = document.getElementById("title").value;
-  if (allowedTitles.includes(userTitle)) {
-    console.log(userTitle);
+  if (allowedTitles.includes(album)) {
+    console.log(album.title);
   } else {
     console.log("Title not found in array.");
   }
