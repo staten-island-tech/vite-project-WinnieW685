@@ -266,8 +266,7 @@ function inject(item) {
 function showCart(item) {
   const cart = document.querySelector(".cart");
   const html = `<div class="cart">
-        <h4 class="cartcardtitle" >${item.title} </h4>
-        <h4 class="cartcardartist" >${item.artist} </h4>
+        <h4 class="cartcardtitle" >${item.title} by ${item.artist}</h4>
         </div>`;
   cart.insertAdjacentHTML("beforeend", html);
 }
@@ -325,7 +324,7 @@ function filterByGenre(genre) {
   });
 }
 
-document.getElementById("searchForm").addEventListener("submit", function (e) {
+/* document.getElementById("searchForm").addEventListener("submit", function (e) {
   //Get Values
   e.preventDefault();
   let album = {};
@@ -338,6 +337,19 @@ document.getElementById("searchForm").addEventListener("submit", function (e) {
     }
   });
   if (!realTitle) {
-    console.log("not reak tuttke");
+    console.log("not real title");
+  }
+});
+ */
+
+const darkLightBtn = document.querySelector(".theme-btn");
+
+darkLightBtn.addEventListener("click", () => {
+  if (document.body.classList.contains("light")) {
+    document.body.classList.remove("light");
+    document.body.classList.add("dark");
+  } else {
+    document.body.classList.remove("dark");
+    document.body.classList.add("light");
   }
 });
