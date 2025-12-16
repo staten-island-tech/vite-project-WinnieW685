@@ -324,24 +324,6 @@ function filterByGenre(genre) {
   });
 }
 
-/* document.getElementById("searchForm").addEventListener("submit", function (e) {
-  //Get Values
-  e.preventDefault();
-  let album = {};
-  album.title = document.getElementById("title").value;
-  let realTitle = false;
-  items.forEach((item) => {
-    if (item.title === album.title) {
-      console.log(album.title);
-      realTitle = true;
-    }
-  });
-  if (!realTitle) {
-    console.log("not real title");
-  }
-});
- */
-
 const darkLightBtn = document.querySelector(".theme-btn");
 
 darkLightBtn.addEventListener("click", () => {

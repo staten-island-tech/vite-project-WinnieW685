@@ -46,6 +46,20 @@ body {
   --cart-text: #000000;
 }
 
+:root {
+  --cart-bg: #f2f2f2;
+  --cart-text: #000000;
+}
+
+.light {
+  --cart-bg: #f2f2f2;
+  --cart-text: #000000;
+}
+
+.dark {
+  --cart-bg: #2a2a2a;
+  --cart-text: #000000;
+}
 body {
   background-color: var(--bg);
   margin: 0;
@@ -144,6 +158,12 @@ button:hover {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  padding-top: 5px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  font-size: 20px;
+  color: #000000;
+}
+.cartcardtitle {
+  color: #000000;
   font-size: 10px;
 }
